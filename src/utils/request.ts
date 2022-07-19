@@ -3,7 +3,7 @@ import { Toast } from "vant";
 import { useStore } from "@/store";
 const store = useStore();
 const service: AxiosInstance = axios.create({
-  baseURL: "https://srv.buysellads.com/",
+  baseURL: "",
   timeout: 5000,
 });
 
