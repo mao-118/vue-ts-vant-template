@@ -7,7 +7,7 @@
     </van-overlay>
   </Teleport>
 </template>
-<script setup lang="ts">
+<script setup lang="ts" name="Loading">
 import { useStore } from "@/store";
 import { storeToRefs } from "pinia";
 const store = useStore();

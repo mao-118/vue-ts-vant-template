@@ -1,14 +1,16 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { Toast } from "vant";
 import { useStore } from "@/store";
+import { ResponseData } from "./types";
 const store = useStore();
+
 const service: AxiosInstance = axios.create({
-  baseURL: "",
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 5000,
 });
 
 service.interceptors.request.use(
-  (config: AxiosRequestConfig<any>) => {
+  (config: AxiosRequestConfig<ResponseData>) => {
     Toast.clear();
     store.setLoading(true);
     return config;
@@ -20,7 +22,7 @@ service.interceptors.request.use(
 );
 
 service.interceptors.response.use(
-  (response: AxiosResponse<any, any>) => {
+  (response: AxiosResponse<ResponseData, ResponseData>) => {
     store.setLoading(false);
     const res = response.data;
     if (res.code !== 200) {

@@ -9,7 +9,6 @@
 </template>
 <script setup lang="ts">
 import { Toast } from "vant";
-import "vant/es/toast/style";
 import { getListApi } from "@/api/demo";
 const showTigger = (): void => {
   Toast.success("ok");
