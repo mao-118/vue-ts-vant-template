@@ -2,11 +2,15 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Toast } from 'vant';
 import { useStore } from '@/store';
 import { ResponseData } from './types';
+import { getHrefParams } from '@/utils';
 const store = useStore();
 
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 5000,
+  headers: {
+    token: getHrefParams('token')
+  }
 });
 
 service.interceptors.request.use(

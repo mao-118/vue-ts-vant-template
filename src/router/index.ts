@@ -3,7 +3,15 @@ import { routes } from './installRoute';
 
 const router: Router = createRouter({
   history: createWebHashHistory(),
-  routes: routes,
+  routes: [
+    ...routes,
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('@/views/error404/error404.vue'),
+      meta: { title: '404' }
+    }
+  ]
 });
 router.beforeResolve((to, form, next) => {
   document.title = <string>to.meta.title || '默认标题';
