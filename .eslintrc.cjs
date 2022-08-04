@@ -19,7 +19,6 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "indent": ["error", 2, { "SwitchCase": 1 }],//使用缩进
         "no-var": "error", //禁用var
         "semi": ["error", "always"], //结尾使用分号
         "quotes": ["error", "single", { "avoidEscape": true }], //使用单引号
