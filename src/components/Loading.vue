@@ -8,8 +8,8 @@
   </Teleport>
 </template>
 <script setup lang="ts" name="Loading">
-import { useStore } from "@/store";
-import { storeToRefs } from "pinia";
+import { useStore } from '@/store';
+import { storeToRefs } from 'pinia';
 const store = useStore();
 const { loading } = storeToRefs(store);
 </script>

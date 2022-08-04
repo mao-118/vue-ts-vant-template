@@ -1,2 +1,3 @@
 .eslintrc.cjs
-components.d.ts
+node_modules
+dist

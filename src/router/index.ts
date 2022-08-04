@@ -1,5 +1,5 @@
-import { createRouter, Router, createWebHashHistory } from "vue-router";
-import { routes } from "./installRoute";
+import { createRouter, Router, createWebHashHistory } from 'vue-router';
+import { routes } from './installRoute';
 // import routes from "./modules/demo";
 
 
@@ -8,7 +8,7 @@ const router: Router = createRouter({
   routes: routes,
 });
 router.beforeResolve((to, form, next) => {
-  document.title = <string>to.meta.title || "默认标题";
+  document.title = <string>to.meta.title || '默认标题';
   next();
 });
 

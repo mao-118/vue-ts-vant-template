@@ -9,7 +9,7 @@ type routeModule = {
 }
 //一键导入modules下的路由
 function getRoutes(): routeModule[] {
-    const importRouter: Record<string, { default: routeModule }> = import.meta.globEager("./modules/*.ts");
+    const importRouter: Record<string, { default: routeModule }> = import.meta.globEager('./modules/*.ts');
     const keys: string[] = Object.keys(importRouter);
     return keys.reduce((currentRoute: routeModule[], nextRoute: string) => {
         const route: routeModule = (importRouter[nextRoute]).default;

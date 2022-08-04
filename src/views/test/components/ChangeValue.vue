@@ -4,10 +4,10 @@
     </van-cell-group>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
-const emit = defineEmits(["updateText"]);
-const text = ref<string>("");
+import { ref } from 'vue';
+const emit = defineEmits(['updateText']);
+const text = ref<string>('');
 const changeNewValue = (v: string) => {
-    emit("updateText", v);
+    emit('updateText', v);
 };
 </script>

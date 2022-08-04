@@ -3,3 +3,6 @@ export type ResponseData = {
     msg: string,
     data: any
 }
+export type QueryType = {
+    [propName: string]: string
+}

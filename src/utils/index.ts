@@ -1,3 +1,4 @@
+import { QueryType } from './types';
 /**
  *
  * tips: 获取参数的过程中，可能客户端传递的是编码过的地址，所以需要解码一下
@@ -5,17 +6,16 @@
  * 如果是这两种对应的编码方式，获取到地址之后外面用对应的解码方法包裹一下即可
  */
 /*
- * 用于常见的 哈希模式 参数获取
+ *  地址参数获取
  * */
-export function getHashQuery(key: string): string {
-    const query: string = window.location.hash.split("?")[1];
-    const variable: any = {};
-    // 如果不传参数query为undefined
+export function getHrefParams(key: string): string {
+    const query: string = decodeURI(window.location.href).split('?')[1]?.split('#/')[0]; //根路径下hash模式会自动在末尾拼接 #/
+    const variable: QueryType = {};
     if (query) {
-        const variableList: string[] = query.split("&");
+        const variableList: string[] = query.split('&');
         variableList.forEach(item => {
-            const [k] = item.split("=");
-            variable[k] = item.replace(`${k}=`, "").replace(/\s/g, "+");//防止参数携带=号，比如token就可能存在=
+            const [k] = item.split('=');
+            variable[k] = item.replace(`${k}=`, '').replace(/\s/g, '+');//防止参数携带=号，比如token就可能存在=
         });
     }
     return variable[key];
@@ -25,6 +25,6 @@ export function getHashQuery(key: string): string {
  * */
 export function getToken(): string {
     return decodeURIComponent(
-        window.location.search.substring(1).replace("token=", "")
-    ).replace(/\s/g, "+");
+        window.location.search.substring(1).replace('token=', '')
+    ).replace(/\s/g, '+');
 }

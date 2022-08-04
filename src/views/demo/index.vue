@@ -8,10 +8,10 @@
   <van-loading color="#1989fa" />
 </template>
 <script setup lang="ts">
-import { Toast } from "vant";
-import { getListApi } from "@/api/demo";
+import { Toast } from 'vant';
+import { getListApi } from '@/api/demo';
 const showTigger = (): void => {
-  Toast.success("ok");
+  Toast.success('ok');
 };
 const handleRequest = async () => {
   await getListApi();
