@@ -1,4 +1,4 @@
-type routeModule = {
+type RouteModule = {
     path: string,
     name: string,
     component: () => void,
@@ -8,13 +8,12 @@ type routeModule = {
     [propName: string]: any
 }
 //一键导入modules下的路由
-function getRoutes(): routeModule[] {
-    const importRouter: Record<string, { default: routeModule }> = import.meta.globEager('./modules/*.ts');
+function getRoutes(): RouteModule[] {
+    const importRouter: Record<string, { default: RouteModule }> = import.meta.globEager('./modules/*.ts');
     const keys: string[] = Object.keys(importRouter);
-    return keys.reduce((currentRoute: routeModule[], nextRoute: string) => {
-        const route: routeModule = (importRouter[nextRoute]).default;
-        currentRoute.push(route);
+    return keys.reduce((currentRoute: RouteModule[], nextRoute: string) => {
+        currentRoute = currentRoute.concat(importRouter[nextRoute].default);
         return currentRoute;
-    }, [] as routeModule[]);
+    }, [] as RouteModule[]);
 }
-export const routes: routeModule[] = getRoutes();
+export const routes: RouteModule[] = getRoutes();
