@@ -14,7 +14,7 @@ const router: Router = createRouter({
   ]
 });
 router.beforeResolve((to, form, next) => {
-  document.title = <string>to.meta.title || '默认标题';
+  document.title = (to.meta.title as string) || '默认标题';
   next();
 });
 

@@ -1,7 +1,7 @@
 type RouteModule = {
     path: string,
     name: string,
-    component: () => void,
+    component(): Promise<object>,
     meta?: {
         title?: string
     },

@@ -1,6 +1,6 @@
 # Vue 3 + TypeScript + Vite
 
-该模板将帮助您开始在Vite中使用Vue 3和TypeScript进行开发。
+该模板将帮助您开始在`Vite`中使用`Vue3` 和 `TypeScript`进行开发。
 
 
 ```bash
@@ -17,10 +17,16 @@ npm run dev
 npm run build:deve
 ```
 
-
 ## 推荐配置
 
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+## eslint
+项目中配备 `eslint` 语法校验以及代码修复，基于 `vue3`，我们使用 `volar` 而不是 `vuter`。
+
+`volar` 对 `vue3` 的语法支持更友好。
+
+要实现代码修复，需要 `vscode` 中的 `setting.json` 中设置 `"eslint.autoFixOnSave": true,`
 
 ## vant引入
 
@@ -39,11 +45,4 @@ npm run build:deve
 ## 路由
 
 路由文件统一放在 `@/router/modules` 中，在 `@/router/index.ts` 中采用一键导入的形式注入路由，所以只关心路由的创建即可。
-
-## eslint
-项目中配备 `eslint` 语法校验以及代码修复，基于 `vue3`，我们使用 `volar` 而不是 `vuter`。
-
-`volar` 对 `vue3` 的语法支持更友好。
-
-要实现代码修复，需要 `vscode` 中的 `setting.json` 中设置 `"eslint.autoFixOnSave": true,`
 
