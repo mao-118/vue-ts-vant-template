@@ -1,6 +1,6 @@
 export default [
     {
-        path: '/demo',
+        path: '/',
         name: 'Demo',
         component: () => import('@/views/demo/index.vue')
     }, {
