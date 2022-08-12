@@ -1,8 +1,10 @@
 <template>
   <Teleport to="body">
     <van-overlay :show="loading">
-      <div class="wrapper" @click.stop>
-        <van-loading vertical color="#fff">请稍等...</van-loading>
+      <div class="wrapper">
+        <van-loading vertical color="#fff">
+          请稍等...
+        </van-loading>
       </div>
     </van-overlay>
   </Teleport>

@@ -4,10 +4,11 @@ module.exports = {
         "es2021": true
     },
     "extends": [
-        "./.eslintrc-auto-import.json",
-        "eslint:recommended",
+        "./.eslintrc-auto-import.json", //自动导入组合api
+        "eslint:recommended", //开启默认的eslint基础校验
+        'plugin:vue/vue3-recommended', //开启vue3校验
         "plugin:vue/vue3-essential",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended" //ts
     ],
     "parser": "vue-eslint-parser",
     "parserOptions": {
@@ -37,6 +38,7 @@ module.exports = {
         }],
         "comma-dangle": [2, "never"], //末尾不适用逗号
         "array-bracket-newline": ["error", { "multiline": true }], //数组前后空格
-        "space-infix-ops": "error" //操作符前后空格
+        "space-infix-ops": "error", //操作符前后空格
+        "vue/max-attributes-per-line": ["off"]
     }
 }
