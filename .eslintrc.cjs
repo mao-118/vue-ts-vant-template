@@ -6,7 +6,7 @@ module.exports = {
     "extends": [
         "./.eslintrc-auto-import.json", //自动导入组合api
         "eslint:recommended", //开启默认的eslint基础校验
-        'plugin:vue/vue3-recommended', //开启vue3校验
+        // 'plugin:vue/vue3-recommended', //开启vue3校验
         "plugin:vue/vue3-essential",
         "plugin:@typescript-eslint/recommended" //ts
     ],
