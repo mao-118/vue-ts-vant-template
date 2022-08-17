@@ -10,7 +10,7 @@
   </van-cell-group>
 
   <van-cell-group inset>
-    <van-field @update:model-value="debounce(hanldeChange)" v-model="text" label="防抖" placeholder="请输入内容" />
+    <van-field v-model="text" label="防抖" placeholder="请输入内容" @update:model-value="debounce(hanldeChange)" />
   </van-cell-group>
 
   <van-cell-group inset>

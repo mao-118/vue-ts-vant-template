@@ -1,7 +1,7 @@
 import _ from 'lodash';
 //节流
 export const throttled = _.throttle(
-    (fun, ...args) => fun.apply(this, args),
+    (fun, ...args) => fun.apply(undefined, args),
     2000,
     {
         leading: true,
@@ -10,6 +10,6 @@ export const throttled = _.throttle(
 );
 //防抖
 export const debounce = _.debounce(
-    (fun, ...args) => fun.apply(this, args),
+    (fun, ...args) => fun.apply(undefined, args),
     500
 );

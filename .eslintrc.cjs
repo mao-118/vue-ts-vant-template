@@ -6,8 +6,8 @@ module.exports = {
     "extends": [
         "./.eslintrc-auto-import.json", //自动导入组合api
         "eslint:recommended", //开启默认的eslint基础校验
-        // 'plugin:vue/vue3-recommended', //开启eslint-plugin-vue规则校验
-        "plugin:vue/vue3-essential",
+        "plugin:vue/vue3-recommended", //开启eslint-plugin-vue规则校验
+        "plugin:vue/vue3-essential", //vue3核心的lint的规则
         "plugin:@typescript-eslint/recommended" //ts
     ],
     "parser": "vue-eslint-parser",
@@ -21,6 +21,17 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "vue/v-on-event-hyphenation": ["always"],
+        "vue/singleline-html-element-content-newline": 0,
+        "vue/html-indent": 0,
+        "vue/max-attributes-per-line": ["error", {
+            "singleline": {
+                "max": 1
+            },
+            "multiline": {
+                "max": 1
+            }
+        }],
         "no-var": "error", //禁用var
         "semi": ["error", "always"], //结尾使用分号
         "quotes": ["error", "single", { "avoidEscape": true }], //使用单引号
