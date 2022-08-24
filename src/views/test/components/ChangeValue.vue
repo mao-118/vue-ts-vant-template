@@ -4,8 +4,9 @@
     </van-cell-group>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-const emit = defineEmits(['updateText']);
+const emit = defineEmits<{
+    (e: 'updateText', v: string): void
+}>();
 const text = ref<string>('');
 const changeNewValue = (v: string) => {
     emit('updateText', v);
