@@ -21,7 +21,6 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "vue/v-on-event-hyphenation": ["always"],
         "vue/singleline-html-element-content-newline": 0,
         "vue/html-indent": 0,
         "vue/max-attributes-per-line": ["error", {
