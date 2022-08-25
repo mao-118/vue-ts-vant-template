@@ -22,7 +22,7 @@ npm run build:deve
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 ## eslint
-项目中配备 `eslint` 语法校验以及代码修复，基于 `vue3`，我们使用 `volar` 而不是 `vuter`。
+项目中配备 `eslint` 语法校验以及代码修复，基于 `vue3`，我们使用 `volar` 而不是 `vetur`。
 
 `volar` 对 `vue3` 的语法支持更友好。
 
