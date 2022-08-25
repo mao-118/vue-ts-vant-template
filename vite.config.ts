@@ -3,10 +3,11 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import autoprefixer from 'autoprefixer';
 import PostcssPxToViewport from 'postcss-px-to-viewport'; //自适应
-import Components from 'unplugin-vue-components/vite';//vant自动导入
+import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers'; //vant自动导入
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'; //setup支持name
 import AutoImport from 'unplugin-auto-import/vite'; //自动导入组合api
+import legacy from '@vitejs/plugin-legacy';
 // https://vitejs.dev/config/
 export default defineConfig({
   root: './',
@@ -28,6 +29,12 @@ export default defineConfig({
     vueSetupExtend(),
     Components({ //https://github.com/antfu/unplugin-vue-components
       resolvers: [VantResolver()]
+    }),
+    // 解决较老手机浏览器白屏的问题
+    // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
+    legacy({
+      targets: ['ie >= 11'],
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime']
     })
   ],
   css: {
