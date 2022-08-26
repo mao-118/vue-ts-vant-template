@@ -1,9 +1,9 @@
 <template>
-    <van-nav-bar :title="title" :left-arrow="showLeft" :left-text="leftText" @click-left="onClickLeft"
-        @click-right="onClickRight" :border="false" class="nav-bar" :style="{ paddingTop: `${store.topHeight}px` }">
+    <van-nav-bar :title="title" :left-arrow="showLeft" :left-text="leftText" :border="false" class="nav-bar"
+        :style="{ paddingTop: `${store.topHeight}px` }" @click-left="onClickLeft" @click-right="onClickRight">
         <template #right>
             <!-- 右侧插槽 -->
-            <slot name="right"></slot>
+            <slot name="right" />
         </template>
     </van-nav-bar>
 </template>
