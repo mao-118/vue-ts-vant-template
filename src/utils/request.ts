@@ -1,7 +1,6 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { Toast } from 'vant';
 import { useStore } from '@/store';
-import { ResponseData } from './types';
 import { getHrefParams } from '@/utils';
 const store = useStore();
 
@@ -14,7 +13,7 @@ const service: AxiosInstance = axios.create({
 });
 
 service.interceptors.request.use(
-  (config: AxiosRequestConfig<ResponseData>) => {
+  config => {
     Toast.clear();
     store.setLoading(true);
     return config;
@@ -26,7 +25,7 @@ service.interceptors.request.use(
 );
 
 service.interceptors.response.use(
-  (response: AxiosResponse<ResponseData, ResponseData>) => {
+  response => {
     store.setLoading(false);
     const res = response.data;
     if (res.code !== 200) {

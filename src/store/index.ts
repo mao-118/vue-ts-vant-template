@@ -10,7 +10,7 @@ export const useStore = defineStore('main', {
       this.loading = loading;
     },
     setTopHeight(top: number) {
-      this.topHeight = top
+      this.topHeight = top;
     }
   }
 });

@@ -1,13 +1,3 @@
-export type ResponseData = {
-    code: number,
-    msg?: string,
-    message?: string,
-    data: any
-}
-export type QueryType = {
-    [propName: string]: string
-}
-
 export enum CLINET_COMMAND {
     /* 关闭浏览器指令 */
     CLOSE = 'onCloseBtnClick',
