@@ -38,5 +38,6 @@ const handleDebounce = (e: string) => {
 <style scoped>
 .demo {
   font-size: 26px;
+  display: flex;
 }
 </style>
