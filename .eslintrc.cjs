@@ -49,6 +49,7 @@ module.exports = {
         "comma-dangle": [2, "never"], //末尾不适用逗号
         "array-bracket-newline": ["error", { "multiline": true }], //数组前后空格
         "space-infix-ops": "error", //操作符前后空格
-        "vue/max-attributes-per-line": ["off"]
+        "vue/max-attributes-per-line": ["off"],
+        "vue/v-on-event-hyphenation": 0
     }
 }
