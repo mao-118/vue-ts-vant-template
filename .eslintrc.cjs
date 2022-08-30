@@ -23,14 +23,6 @@ module.exports = {
     "rules": {
         "vue/singleline-html-element-content-newline": 0,
         "vue/html-indent": 0,
-        "vue/max-attributes-per-line": ["error", {
-            "singleline": {
-                "max": 1
-            },
-            "multiline": {
-                "max": 1
-            }
-        }],
         "no-var": "error", //禁用var
         "semi": ["error", "always"], //结尾使用分号
         "quotes": ["error", "single", { "avoidEscape": true }], //使用单引号
