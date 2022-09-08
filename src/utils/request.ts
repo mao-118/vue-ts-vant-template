@@ -1,8 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import { Toast } from 'vant';
-import { useStore } from '@/store';
+import { loading } from '@/hooks';
 import { getHrefParams } from '@/utils';
-const store = useStore();
 
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -15,28 +14,30 @@ const service: AxiosInstance = axios.create({
 service.interceptors.request.use(
   config => {
     Toast.clear();
-    store.setLoading(true);
+    loading.value = true;
     return config;
   },
   (error) => {
-    store.setLoading(false);
+    loading.value = false;
     console.log(error);
   }
 );
-
+function toastInfo(res: Partial<{ msg: string, message: string }>) {
+  return res.msg || res.message || '请求失败';
+}
 service.interceptors.response.use(
   response => {
-    store.setLoading(false);
+    loading.value = false;
     const res = response.data;
     if (res.code !== 200) {
-      Toast.fail(res.msg || '请求失败');
-      return Promise.reject(new Error(res.msg || '请求失败'));
+      Toast.fail(toastInfo(res));
+      return Promise.reject(new Error(toastInfo(res)));
     }
     return Promise.resolve(res);
   },
   (error) => {
-    store.setLoading(false);
-    Toast.fail(error.message || '请求失败');
+    loading.value = false;
+    Toast.fail(toastInfo(error));
     return Promise.reject(error);
   }
 );

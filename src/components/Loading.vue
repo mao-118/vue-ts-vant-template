@@ -10,10 +10,7 @@
   </Teleport>
 </template>
 <script setup lang="ts" name="Loading">
-import { useStore } from '@/store';
-import { storeToRefs } from 'pinia';
-const store = useStore();
-const { loading } = storeToRefs(store);
+import { loading } from '@/hooks';
 </script>
 <style lang="scss" scoped>
 .wrapper {
