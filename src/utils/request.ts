@@ -22,7 +22,11 @@ service.interceptors.request.use(
     console.log(error);
   }
 );
-function toastInfo(res: Partial<{ msg: string, message: string }>) {
+interface Info {
+  msg: string,
+  message: string
+}
+function toastInfo(res: Partial<Info>) {
   return res.msg || res.message || '请求失败';
 }
 service.interceptors.response.use(
