@@ -1,6 +1,6 @@
 <template>
   <van-nav-bar :title="title" :left-arrow="showLeft" :left-text="leftText" :border="false" class="nav-bar"
-    :style="{ paddingTop: `${store.topHeight}px` }" @click-left="onClickLeft" @click-right="onClickRight">
+    :style="{ paddingTop: `${topHeight}px` }" @click-left="onClickLeft" @click-right="onClickRight">
     <template #right>
       <!-- 右侧插槽 -->
       <slot name="right" />
@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from '@/store';
+import { topHeight } from '@/hooks';
 defineProps({
   //标题
   title: {
@@ -39,7 +39,6 @@ const onClickRight = () => {
   //调用父组件的事件
   emit('clickRight');
 };
-const store = useStore();
 </script>
 <style lang="scss" scoped>
 $color: #252525;
