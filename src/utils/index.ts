@@ -46,9 +46,8 @@ export function judgePhoneType() {
  *     和IOS安卓协商参数
  * */
 export function sendMessage(type: CLINET_COMMAND, params = {}) {
-  type materialsType = Record<string, any>
+  type materialsType = { [key in string]: any }
   const materials: materialsType = { type };
-  const u = navigator.userAgent;
   const { isIos, isAndroid } = judgePhoneType();
   if (isIos) {
     materials.params = params;
