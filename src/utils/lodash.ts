@@ -2,7 +2,7 @@ import _ from 'lodash';
 //节流
 export const throttled = _.throttle(
   (fun, ...args) => fun(...args),
-  2000,
+  1500,
   {
     leading: true,
     trailing: false

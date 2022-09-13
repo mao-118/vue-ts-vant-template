@@ -21,9 +21,7 @@ export function getHrefParams(key: string): string {
  * 获取token,活动专用
  * */
 export function getToken(): string {
-  return decodeURIComponent(
-    window.location.search.substring(1).replace('token=', '')
-  ).replace(/\s/g, '+');
+  return getHrefParams('token');
 }
 
 /**
@@ -51,10 +49,10 @@ export function sendMessage(type: CLINET_COMMAND, params = {}) {
   const { isIos, isAndroid } = judgePhoneType();
   if (isIos) {
     materials.params = params;
-    (window as any).webkit.messageHandlers.common.postMessage(JSON.stringify(materials));
+    window.webkit.messageHandlers.common.postMessage(JSON.stringify(materials));
   } else if (isAndroid) {
     materials.data = params;
-    (window as any).bridge.postMessage(JSON.stringify(materials));
+    window.bridge.postMessage(JSON.stringify(materials));
   }
 }
 /**

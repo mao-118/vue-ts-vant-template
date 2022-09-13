@@ -46,10 +46,6 @@ npm run build:deve
 
 路由文件统一放在 `@/router/modules` 中，在 `@/router/index.ts` 中采用一键导入的形式注入路由，所以只关心路由的创建即可。
 
-## pinia
-
-内置全局状态管理 `pinia`, 详见目录 `@/store`。
-
 ## lodash
 
 项目中引入了 `lodash` 工具库，在目录 `@/utils/lodash` 中可以看到，目前提供了 `节流` 和 `防抖` 供直接使用。
