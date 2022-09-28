@@ -1,6 +1,5 @@
 <script lang="tsx">
 import { Empty } from 'vant';
-import 'vant/es/empty/style';
 export default defineComponent({
   render() {
     const empty = h(Empty,
