@@ -15,6 +15,7 @@ service.interceptors.request.use(
   config => {
     Toast.clear();
     loading.value = true;
+    console.log(111);
     return config;
   },
   (error) => {
