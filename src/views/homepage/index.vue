@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">demo</div>
+  <div class="demo flex">demo</div>
   <van-cell-group inset>
     <van-button type="primary">主要按钮</van-button>
     <van-button type="success" @click="showTigger">成功按钮</van-button>
@@ -38,6 +38,5 @@ const handleDebounce = (e: string) => {
 <style scoped>
 .demo {
   font-size: 26px;
-  display: flex;
 }
 </style>
