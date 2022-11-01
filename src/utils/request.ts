@@ -1,8 +1,8 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
 import { Toast } from 'vant';
-import { loading } from '@/hooks';
 import { getHrefParams } from '@/utils';
-
+import { Result } from '@/utils/types';
+import { NProgress } from '@/plugins/nprogress';
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 5000,
@@ -13,38 +13,34 @@ const service: AxiosInstance = axios.create({
 
 service.interceptors.request.use(
   config => {
-    Toast.clear();
-    loading.value = true;
-    console.log(111);
+    NProgress.start();
     return config;
   },
   (error) => {
-    loading.value = false;
+    NProgress.done();
     console.log(error);
   }
 );
-interface Info {
-  msg: string,
-  message: string
-}
-function toastInfo(res: Partial<Info>) {
+
+function toastInfo(res: Partial<Result>) {
   return res.msg || res.message || '请求失败';
 }
 service.interceptors.response.use(
-  response => {
-    loading.value = false;
+  (response: AxiosResponse): Promise<Result> => {
+    NProgress.done();
     const res = response.data;
     if (res.code !== 200) {
       Toast.fail(toastInfo(res));
-      return Promise.reject(new Error(toastInfo(res)));
+      return Promise.reject(res);
     }
     return Promise.resolve(res);
   },
   (error) => {
-    loading.value = false;
+    NProgress.done();
     Toast.fail(toastInfo(error));
     return Promise.reject(error);
   }
 );
-
-export default service;
+export default function request(config: AxiosRequestConfig): Promise<Result> {
+  return service({ method: 'get', ...config }).then((res: AxiosResponse<Result>) => ({ ...res }));
+}
