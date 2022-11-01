@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import autoprefixer from 'autoprefixer';
+import tailwindcss from 'tailwindcss';
 import PostcssPxToViewport from 'postcss-px-to-viewport'; //自适应
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers'; //vant自动导入
@@ -73,6 +74,16 @@ export default defineConfig({
             'ie >= 8'
             //'last 2 versions', // 所有主流浏览器最近2个版本
           ]
+        }),
+        tailwindcss({
+          content: [
+            './index.html',
+            './src/**/*.{vue,js,ts,jsx,tsx}'
+          ],
+          theme: {
+            extend: {}
+          },
+          plugins: []
         }),
         PostcssPxToViewport({
           unitToConvert: 'px', // 要转化的单位
