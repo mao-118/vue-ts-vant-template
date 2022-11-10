@@ -1,6 +1,7 @@
-import _ from 'lodash';
+import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 //节流
-export const throttled = _.throttle(
+export const throttled = throttle(
   (fun, ...args) => fun(...args),
   1500,
   {
@@ -9,7 +10,7 @@ export const throttled = _.throttle(
   }
 );
 //防抖
-export const debounce = _.debounce(
+export const debounced = debounce(
   (fun, ...args) => fun(...args),
   500
 );
