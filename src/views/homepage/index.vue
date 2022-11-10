@@ -10,7 +10,7 @@
   </van-cell-group>
 
   <van-cell-group inset>
-    <van-field v-model="text" label="防抖" placeholder="请输入内容" @update:model-value="debounce(hanldeChange)" />
+    <van-field v-model="text" label="防抖" placeholder="请输入内容" @update:model-value="debounced(hanldeChange)" />
   </van-cell-group>
 
   <van-cell-group inset>
@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { Toast } from 'vant';
 import { getListApi } from '@/api/demo';
-import { debounce, throttled } from '@/utils/lodash';
+import { debounced, throttled } from '@/utils/lodash';
 const text = ref('');
 const showTigger = (): void => {
   Toast.success('ok');
