@@ -1,6 +1,14 @@
 <template>
-  <van-nav-bar :title="title" :left-arrow="showLeft" :left-text="leftText" :border="false" class="nav-bar"
-    :style="{ paddingTop: `${topHeight}px` }" @click-left="onClickLeft" @click-right="onClickRight">
+  <van-nav-bar
+    :title="title"
+    :left-arrow="showLeft"
+    :left-text="leftText"
+    :border="false"
+    class="nav-bar"
+    :style="{ paddingTop: `${topHeight}px` }"
+    @click-left="onClickLeft"
+    @click-right="onClickRight"
+  >
     <template #right>
       <!-- 右侧插槽 -->
       <slot name="right" />
@@ -9,36 +17,36 @@
 </template>
 
 <script setup lang="ts">
-import { topHeight } from '@/hooks';
+import { topHeight } from '@/hooks'
 defineProps({
-  //标题
+  // 标题
   title: {
     type: String,
-    default: () => document.title
+    default: () => document.title,
   },
-  //左边按钮
+  // 左边按钮
   showLeft: {
     type: Boolean,
-    default: true
+    default: true,
   },
-  //左边文字
+  // 左边文字
   leftText: {
     type: String,
-    default: ''
-  }
-});
+    default: '',
+  },
+})
 const emit = defineEmits<{
-  (e: 'clickLeft'): void,
+  (e: 'clickLeft'): void
   (e: 'clickRight'): void
-}>();
+}>()
 const onClickLeft = () => {
-  //调用父组件的事件
-  emit('clickLeft');
-};
+  // 调用父组件的事件
+  emit('clickLeft')
+}
 const onClickRight = () => {
-  //调用父组件的事件
-  emit('clickRight');
-};
+  // 调用父组件的事件
+  emit('clickRight')
+}
 </script>
 <style lang="scss" scoped>
 $color: #252525;

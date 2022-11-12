@@ -2,7 +2,6 @@
 
 该模板将帮助您开始在`Vite`中使用`Vue3` 和 `TypeScript`进行开发。
 
-
 ```bash
 # 克隆项目
 git clone https://github.com/mao-118/vue-ts-vant-template.git
@@ -22,13 +21,14 @@ npm run build:deve
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 ## eslint
+
 项目中配备 `eslint` 语法校验以及代码修复，基于 `vue3`，我们使用 `volar` 而不是 `vetur`。
 
 `volar` 对 `vue3` 的语法支持更友好。
 
 要实现代码修复，需要 `vscode` 中的 `setting.json` 中设置 `"eslint.autoFixOnSave": true,`
 
-## vant引入
+## vant 引入
 
 这里采用 `vant` 的按需引入,通过 `unplugin-vue-components` 插件实现，直接在文件中使用组件即可生效。
 

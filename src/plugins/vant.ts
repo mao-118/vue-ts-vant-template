@@ -1,2 +1,2 @@
-import 'vant/es/toast/style';
-import 'vant/es/empty/style';
+import 'vant/es/toast/style'
+import 'vant/es/empty/style'
