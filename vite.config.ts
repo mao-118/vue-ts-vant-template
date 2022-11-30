@@ -3,11 +3,11 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
 import tailwindcss from 'tailwindcss'
-import PostcssPxToViewport from 'postcss-px-to-viewport' //自适应
+import PostcssPxToViewport from 'postcss-px-to-viewport' // 自适应
 import Components from 'unplugin-vue-components/vite'
-import { VantResolver } from 'unplugin-vue-components/resolvers' //vant自动导入
-import vueSetupExtend from 'vite-plugin-vue-setup-extend' //setup支持name
-import AutoImport from 'unplugin-auto-import/vite' //自动导入组合api
+import { VantResolver } from 'unplugin-vue-components/resolvers' // vant自动导入
+import vueSetupExtend from 'vite-plugin-vue-setup-extend' // setup支持name
+import AutoImport from 'unplugin-auto-import/vite' // 自动导入组合api
 import legacy from '@vitejs/plugin-legacy'
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,7 +21,7 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      //https://github.com/antfu/unplugin-auto-import
+      // https://github.com/antfu/unplugin-auto-import
       dts: true,
       imports: ['vue', 'vue-router'],
       eslintrc: {
@@ -30,7 +30,7 @@ export default defineConfig({
     }),
     vueSetupExtend(),
     Components({
-      //https://github.com/antfu/unplugin-vue-components
+      // https://github.com/antfu/unplugin-vue-components
       resolvers: [VantResolver()],
     }),
     // 解决较老手机浏览器白屏的问题
@@ -50,7 +50,7 @@ export default defineConfig({
         entryFileNames: 'static/js/[name]-[hash].js',
         assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
         manualChunks(id) {
-          //静态资源分拆打包
+          // 静态资源分拆打包
           if (id.includes('node_modules')) {
             return id.toString().split('node_modules/')[1].split('/')[0].toString()
           }
@@ -60,7 +60,7 @@ export default defineConfig({
     /** 清除console和debugger */
     terserOptions: {
       compress: {
-        drop_console: false, //不清除console
+        drop_console: false, // 不清除console
         drop_debugger: true,
       },
     },
@@ -75,7 +75,7 @@ export default defineConfig({
             'Chrome > 31',
             'ff > 31',
             'ie >= 8',
-            //'last 2 versions', // 所有主流浏览器最近2个版本
+            // 'last 2 versions', // 所有主流浏览器最近2个版本
           ],
         }),
         tailwindcss({
