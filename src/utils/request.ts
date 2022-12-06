@@ -12,7 +12,7 @@ const service: AxiosInstance = axios.create({
 })
 
 service.interceptors.request.use(
-  (config) => {
+  (config: AxiosRequestConfig) => {
     NProgress.start()
     return config
   },

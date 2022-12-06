@@ -1,7 +1,15 @@
 {
   "name": "vite-vant-ts",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "vant移动端模板",
+  "keywords": [
+    "vue",
+    "vite",
+    "vant",
+    "typescript"
+  ],
+  "author": "maolihang",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -15,6 +23,7 @@
     "axios": "^0.27.2",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
+    "ts-md5": "^1.3.1",
     "vant": "^3.5.2",
     "vue": "^3.2.37",
     "vue-router": "^4.1.2"

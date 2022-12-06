@@ -22,5 +22,6 @@ module.exports = {
     camelcase: 0,
     'vue/attribute-hyphenation': 0,
     'vue/multi-word-component-names': 0,
+    '@typescript-eslint/no-explicit-any': 0,
   },
 }
