@@ -12,7 +12,7 @@ export const toEncryption = (obj: any) => {
   let result = ''
   if (obj) {
     /* 过滤对象中的假值 */
-    const objFilter = obj
+    const objFilter: Record<string, any> = {}
     Object.keys(obj).forEach((key) => {
       if (!FALSE_VALUE.includes(obj[key])) objFilter[key] = obj[key]
     })
