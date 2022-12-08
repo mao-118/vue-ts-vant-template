@@ -16,8 +16,8 @@ export const toEncryption = (obj: any) => {
     Object.keys(obj).forEach((key) => {
       if (!FALSE_VALUE.includes(obj[key])) objFilter[key] = obj[key]
     })
-    const keys = Object.keys(objFilter).sort().reverse()
-    for (const key of keys) result += `${key}${obj[key]}`
+    const keys: string[] = Object.keys(objFilter).sort().reverse()
+    for (const key of keys) result += `${key}${objFilter[key]}`
   }
   result += VITE_APP_API_SECRET
   return Md5.hashStr(result)
