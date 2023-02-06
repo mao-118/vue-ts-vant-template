@@ -6,8 +6,8 @@ import { CLINET_COMMAND } from './types'
  * 如果是这两种对应的编码方式，获取到地址之后外面用对应的解码方法包裹一下即可
  */
 export function getHrefParams(key: string): string {
-  const query: string = decodeURI(window.location.href).split('?')[1]?.split('#/')[0] // 根路径下hash模式会自动在末尾拼接 #/
-  const variable: { [propName: string]: string } = {}
+  const query: string = decodeURIComponent(window.location.href).split('?')[1]?.split('#/')[0] // 根路径下hash模式会自动在末尾拼接 #/
+  const variable: Record<string, string> = {}
   if (query) {
     const variableList: string[] = query.split('&')
     variableList.forEach((item) => {
@@ -44,7 +44,7 @@ export function judgePhoneType() {
  *     和IOS安卓协商参数
  * */
 export function sendMessage(type: CLINET_COMMAND, params = {}) {
-  type materialsType = { [key in string]: any }
+  type materialsType = Record<string, any>
   const materials: materialsType = { type }
   const { isIos, isAndroid } = judgePhoneType()
   if (isIos) {
@@ -77,4 +77,14 @@ export function versionfunegt(ver1: string, ver2: string): boolean {
       return false
     }
   }
+}
+
+/**
+ * getAssetsFile
+ * @desc 获取静态资源地址
+ * @param dir 文件夹名称
+ * @param url 文件名
+ */
+export function getAssetsFile(url: string): string {
+  return new URL(`../assets/${url}`, import.meta.url).href
 }

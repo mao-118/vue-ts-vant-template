@@ -1,19 +1,25 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios'
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig, AxiosRequestHeaders } from 'axios'
 import { Toast } from 'vant'
-import { getHrefParams } from '@/utils'
+import { getToken } from '@/utils'
 import { Result } from '@/utils/types'
 import { NProgress } from '@/plugins/nprogress'
+import { toEncryption } from './encryption'
+
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 5000,
   headers: {
-    token: getHrefParams('token'),
+    token: getToken(),
   },
 })
 
 service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     NProgress.start()
+    // 验签
+    // const requestHeaders = config.headers as AxiosRequestHeaders
+    // requestHeaders.timestamp = String(Math.floor(new Date().valueOf() / 1000))
+    // requestHeaders.sign = toEncryption(config.data || config.params || {})
     return config
   },
   (error) => {

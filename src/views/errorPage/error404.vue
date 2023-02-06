@@ -5,7 +5,7 @@ export default defineComponent({
     const empty = h(
       Empty,
       { image: 'error', description: '没有找到该页面！！！' },
-      { default: () => [h('div', { class: 'tip' }, '404 Not Found')] }
+      { default: () => h('div', { class: 'tip' }, '404 Not Found') }
     )
     const content = h('div', { class: 'content-404' }, empty)
     return content

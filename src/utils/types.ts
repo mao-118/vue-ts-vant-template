@@ -10,8 +10,13 @@ export enum CLINET_COMMAND {
   goNobility = 'goNobility',
   // 前往福利中心
   GOWELFARECENTER = 'goWelfareCenter',
+  // 底部弹出充值弹窗
+  // 安卓 需使用 window.bridge.reCharge();
   RECHARGE = 'reCharge',
+  // 跳转至发现首页
+  HOT_DYNAMIC = 'hotDynamic',
 }
+
 export type Result<D = any> = {
   code?: number
   message?: string
