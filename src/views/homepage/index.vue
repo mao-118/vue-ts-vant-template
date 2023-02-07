@@ -26,7 +26,7 @@ const showTigger = (): void => {
   Toast.success('ok')
 }
 const handleRequest = async () => {
-  const { data } = await getListApi()
+  const { data } = await getListApi({})
 }
 const hanldeChange = () => {
   console.log(text.value)

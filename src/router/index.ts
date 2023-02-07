@@ -3,6 +3,9 @@ import { routes } from './installRoute'
 
 const router = createRouter({
   history: createWebHashHistory(),
+  scrollBehavior() {
+    return { top: 0 }
+  },
   routes: [
     ...routes,
     {
