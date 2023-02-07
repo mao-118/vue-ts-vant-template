@@ -5,6 +5,7 @@ import autoprefixer from 'autoprefixer'
 import tailwindcss from 'tailwindcss'
 import PostcssPxToViewport from 'postcss-px-to-viewport' // 自适应
 import Components from 'unplugin-vue-components/vite'
+import compressPlugin from 'vite-plugin-compression'
 import { VantResolver } from 'unplugin-vue-components/resolvers' // vant自动导入
 import vueSetupExtend from 'vite-plugin-vue-setup-extend' // setup支持name
 import AutoImport from 'unplugin-auto-import/vite' // 自动导入组合api
@@ -20,6 +21,15 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    compressPlugin({
+      // gzip静态资源压缩
+      verbose: true, // 默认即可
+      disable: false, // 开启压缩(不禁用)，默认即可
+      deleteOriginFile: false, // 删除源文件
+      threshold: 10240, // 压缩前最小文件大小 10K
+      algorithm: 'gzip', // 压缩算法
+      ext: '.gz', // 文件类型
+    }),
     AutoImport({
       // https://github.com/antfu/unplugin-auto-import
       dts: true,
