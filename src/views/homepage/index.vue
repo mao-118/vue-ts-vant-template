@@ -10,11 +10,11 @@
   </van-cell-group>
 
   <van-cell-group inset>
-    <van-field v-model="text" label="防抖" placeholder="请输入内容" @update:model-value="debounced(hanldeChange)" />
+    <van-field v-model="text" label="防抖" placeholder="请输入内容" @update:model-value="hanldeChange" />
   </van-cell-group>
 
   <van-cell-group inset>
-    <van-button color="#7232dd" @click="throttled(handleDebounce, 'ok')"> 点我测试节流 </van-button>
+    <van-button color="#7232dd" @click="handleThrottled('ok')"> 点我测试节流 </van-button>
   </van-cell-group>
 </template>
 <script setup lang="ts">
@@ -27,13 +27,14 @@ const showTigger = (): void => {
 }
 const handleRequest = async () => {
   const { data } = await getListApi({})
+  console.log({ data })
 }
-const hanldeChange = () => {
-  console.log(text.value)
-}
-const handleDebounce = (e: string) => {
-  console.log(e)
-}
+const hanldeChange = debounced((val: string) => {
+  console.log({ val })
+})
+const handleThrottled = throttled((val: string) => {
+  console.log({ val })
+})
 </script>
 <style scoped>
 .demo {

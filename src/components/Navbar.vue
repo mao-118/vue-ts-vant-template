@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { topHeight } from '@/hooks'
+import { topHeight } from '@/commData'
 defineProps({
   // 标题
   title: {
