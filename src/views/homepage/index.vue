@@ -1,43 +1,50 @@
 <template>
-  <div class="demo flex">demo</div>
-  <van-cell-group inset>
-    <van-button type="primary"> 主要按钮 </van-button>
-    <van-button type="success" @click="showTigger"> 成功按钮 </van-button>
-    <van-button type="default" @click="handleRequest"> 默认按钮 </van-button>
-    <van-button type="warning"> 警告按钮 </van-button>
-    <van-button type="danger"> 危险按钮 </van-button>
-    <van-loading color="#1989fa" />
-  </van-cell-group>
-
-  <van-cell-group inset>
-    <van-field v-model="text" label="防抖" placeholder="请输入内容" @update:model-value="hanldeChange" />
-  </van-cell-group>
-
-  <van-cell-group inset>
-    <van-button color="#7232dd" @click="handleThrottled('ok')"> 点我测试节流 </van-button>
-  </van-cell-group>
+  <div class="home-container">
+    <div ref="box" class="box"></div>
+    <div class="btn-list flex justify-around mt-2">
+      <van-button type="primary" @click="boxGsap.play()">play</van-button>
+      <van-button type="success" @click="boxGsap.pause()">pause</van-button>
+      <van-button type="default" @click="boxGsap.resume()">resume</van-button>
+      <van-button type="warning" @click="boxGsap.reverse()">reverse</van-button>
+      <van-button type="danger" @click="boxGsap.restart()">restart</van-button>
+    </div>
+  </div>
 </template>
 <script setup lang="ts">
-import { Toast } from 'vant'
-import { getListApi } from '@/api/demo'
-import { debounced, throttled } from '@/utils/lodash'
-const text = ref('')
-const showTigger = (): void => {
-  Toast.success('ok')
+import gsap from 'gsap'
+const boxGsap = ref()
+const box = ref()
+const boxMove = () => {
+  const width = document.body.clientWidth
+  boxGsap.value = gsap.to('.box', {
+    x: width - box.value.clientWidth,
+    backgroundColor: 'orange',
+    repeat: 2,
+    yoyo: true,
+    duration: 3,
+  })
 }
-const handleRequest = async () => {
-  const { data } = await getListApi({})
-  console.log({ data })
-}
-const hanldeChange = debounced((val: string) => {
-  console.log({ val })
-})
-const handleThrottled = throttled((val: string) => {
-  console.log({ val })
+
+onMounted(() => {
+  boxMove()
 })
 </script>
-<style scoped>
-.demo {
-  font-size: 26px;
+<style lang="scss" scoped>
+.home-container {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  box-sizing: border-box;
+}
+.box {
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  border-radius: 50%;
+}
+.van-button {
+  width: 60px;
+  height: 25px;
+  font-size: 10px;
 }
 </style>

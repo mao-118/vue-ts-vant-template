@@ -88,13 +88,7 @@ export default defineConfig({
             // 'last 2 versions', // 所有主流浏览器最近2个版本
           ],
         }),
-        tailwindcss({
-          content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-          theme: {
-            extend: {},
-          },
-          plugins: [],
-        }),
+        tailwindcss(),
         PostcssPxToViewport({
           unitToConvert: 'px', // 要转化的单位
           viewportWidth: 375, // UI设计稿的宽度
