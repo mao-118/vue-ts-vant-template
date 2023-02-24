@@ -1,4 +1,4 @@
-import { CLINET_COMMAND } from './types'
+import { ClientMethod } from './types'
 /**
  * 地址参数获取
  * tips: 获取参数的过程中，可能客户端传递的是编码过的地址，所以需要解码一下
@@ -38,12 +38,11 @@ export function judgePhoneType() {
  * 调用IOS | android API接口方法
  * 消息传送
  * type: 执行操作类型
- *     src/common/ConstantPool.js IOS_COMMAND 查看所有 type
- *     eg : sendMessage(IOS_COMMAND.CLOSE)
+ * CLINETMETHOD 枚举对象
  * data: 所需要的参数
  *     和IOS安卓协商参数
  * */
-export function sendMessage(type: CLINET_COMMAND, params = {}) {
+export function callClientMethod(type: ClientMethod, params = {}) {
   type materialsType = Record<string, any>
   const materials: materialsType = { type }
   const { isIos, isAndroid } = judgePhoneType()
