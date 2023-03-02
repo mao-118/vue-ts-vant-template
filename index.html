@@ -15,9 +15,33 @@
   <body>
     <div id="app">
       <div class="loader">
-        <div class="loader-text" data-text="加载中...">加载中...</div>
+        <div class="loader-text" data-text="气泡音符">气泡音符</div>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
+<script>
+  window.οnlοad = function () {
+    document.addEventListener('touchstart', function (event) {
+      if (event.touches.length > 1) {
+        event.preventDefault()
+      }
+    })
+    var lastTouchEnd = 0
+    document.addEventListener(
+      'touchend',
+      function (event) {
+        var now = new Date().getTime()
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault()
+        }
+        lastTouchEnd = now
+      },
+      false
+    )
+    document.addEventListener('gesturestart', function (event) {
+      event.preventDefault()
+    })
+  }
+</script>
