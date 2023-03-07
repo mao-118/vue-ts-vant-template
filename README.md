@@ -1,5 +1,3 @@
-# 杭州天渺科技
-
 ## Vue 3 + TypeScript + Vite
 
 该模板将帮助您开始在`Vite`中使用`Vue3` 和 `TypeScript`进行开发。
