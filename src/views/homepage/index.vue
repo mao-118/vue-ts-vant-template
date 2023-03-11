@@ -1,33 +1,11 @@
 <template>
-  <div class="home-container">
-    <div ref="box" class="box"></div>
-    <div class="btn-list flex justify-around mt-2">
-      <van-button type="primary" @click="boxGsap.play()">play</van-button>
-      <van-button type="success" @click="boxGsap.pause()">pause</van-button>
-      <van-button type="default" @click="boxGsap.resume()">resume</van-button>
-      <van-button type="warning" @click="boxGsap.reverse()">reverse</van-button>
-      <van-button type="danger" @click="boxGsap.restart()">restart</van-button>
-    </div>
-  </div>
+  <van-button type="primary" @click="handleToast">toast</van-button>
 </template>
 <script setup lang="ts">
-import gsap from 'gsap'
-const boxGsap = ref()
-const box = ref()
-const boxMove = () => {
-  const width = document.body.clientWidth
-  boxGsap.value = gsap.to('.box', {
-    x: width - box.value.clientWidth,
-    backgroundColor: 'orange',
-    repeat: 2,
-    yoyo: true,
-    duration: 3,
-  })
+import { Toast } from 'vant'
+const handleToast = () => {
+  Toast('hello')
 }
-
-onMounted(() => {
-  boxMove()
-})
 </script>
 <style lang="scss" scoped>
 .home-container {

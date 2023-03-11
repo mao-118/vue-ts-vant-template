@@ -6,7 +6,7 @@ import tailwindcss from 'tailwindcss'
 import PostcssPxToViewport from 'postcss-px-to-viewport' // 自适应
 import Components from 'unplugin-vue-components/vite'
 import compressPlugin from 'vite-plugin-compression'
-import { VantResolver } from 'unplugin-vue-components/resolvers' // vant自动导入
+import { VantResolver } from 'unplugin-vue-components/resolvers' // 组件自动导入
 import vueSetupExtend from 'vite-plugin-vue-setup-extend' // setup支持name
 import AutoImport from 'unplugin-auto-import/vite' // 自动导入组合api
 import legacy from '@vitejs/plugin-legacy'
