@@ -47,6 +47,4 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-export default function request(config: AxiosRequestConfig): Promise<Result> {
-  return service({ method: 'get', ...config }).then((res: AxiosResponse<Result>) => ({ ...res }))
-}
+export default service
