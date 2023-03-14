@@ -46,7 +46,6 @@
     "@vitejs/plugin-legacy": "^2.0.1",
     "@vitejs/plugin-vue": "^3.0.0",
     "autoprefixer": "^10.4.8",
-    "consola": "^2.15.3",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
