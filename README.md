@@ -9,13 +9,13 @@
 git clone http://tm-coderepos.tianmcloud.com/maolihang/vue-ts-vant-template.git
 
 #安装依赖
-npm install
+pnpm install
 
 # 启动项目
-npm run dev
+pnpm run dev
 
 # 部署项目(根据环境打包)
-npm run build:deve
+pnpm run build:deve
 ```
 
 ## 推荐配置
