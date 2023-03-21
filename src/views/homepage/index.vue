@@ -3,7 +3,9 @@
 </template>
 <script setup lang="ts">
 import { Toast } from 'vant'
-const handleToast = () => {
+import { getListApi } from '@/api/demo'
+const handleToast = async () => {
   Toast('hello')
+  const { data } = await getListApi({})
 }
 </script>

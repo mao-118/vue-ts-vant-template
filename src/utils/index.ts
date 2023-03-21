@@ -1,4 +1,3 @@
-import { ClientMethod } from './types'
 /**
  * 地址参数获取
  * tips: 获取参数的过程中，可能客户端传递的是编码过的地址，所以需要解码一下
@@ -42,7 +41,7 @@ export function judgePhoneType() {
  * data: 所需要的参数
  *     和IOS安卓协商参数
  * */
-export function callClientMethod(type: ClientMethod, params = {}) {
+export function callClientMethod(type: UtilTypes.ClientMethod, params = {}) {
   type materialsType = Record<string, any>
   const materials: materialsType = { type }
   const { isIos, isAndroid } = judgePhoneType()

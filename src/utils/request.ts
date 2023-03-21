@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig, AxiosRequestHeaders } from 'axios'
 import { Toast } from 'vant'
 import { getToken } from '@/utils'
-import { Result } from '@/utils/types'
 import { NProgress } from '@/plugins/nprogress'
 import { toEncryption } from './encryption'
 
@@ -28,11 +27,11 @@ service.interceptors.request.use(
   }
 )
 
-function toastInfo(res: Partial<Result>) {
+function toastInfo(res: Partial<UtilTypes.Result>) {
   return res.msg || res.message || '请求失败'
 }
 service.interceptors.response.use(
-  (response: AxiosResponse): Promise<Result> => {
+  (response: AxiosResponse): Promise<UtilTypes.Result> => {
     NProgress.done()
     const res = response.data
     if (res.code !== 200) {
