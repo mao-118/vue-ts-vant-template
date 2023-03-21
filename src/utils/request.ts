@@ -3,7 +3,7 @@ import { Toast } from 'vant'
 import { getToken } from '@/utils'
 import { NProgress } from '@/plugins/nprogress'
 import { toEncryption } from './encryption'
-
+import { Result } from './typings'
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 5000,
@@ -27,11 +27,11 @@ service.interceptors.request.use(
   }
 )
 
-function toastInfo(res: Partial<UtilTypes.Result>) {
+function toastInfo(res: Partial<Result>) {
   return res.msg || res.message || '请求失败'
 }
 service.interceptors.response.use(
-  (response: AxiosResponse): Promise<UtilTypes.Result> => {
+  (response: AxiosResponse): Promise<Result> => {
     NProgress.done()
     const res = response.data
     if (res.code !== 200) {
