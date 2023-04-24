@@ -5,7 +5,7 @@
     :left-text="leftText"
     :border="false"
     class="nav-bar"
-    :style="{ paddingTop: `${topHeight}px` }"
+    :style="{ paddingTop: `${topHeight}px`, backgroundColor: 'transparent' }"
     @click-left="onClickLeft"
     @click-right="onClickRight"
   >
@@ -49,7 +49,7 @@ const onClickRight = () => {
 }
 </script>
 <style lang="scss" scoped>
-$color: #252525;
+$color: #fff;
 
 .nav-bar {
   height: 46px;
