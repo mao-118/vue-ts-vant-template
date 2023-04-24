@@ -19,7 +19,7 @@
           x5-video-player-type="h5"
           x5-video-player-fullscreen="x5-video-player-fullscreen"
           muted="true"
-          src="@/assets/play.mp4"
+          src="../../assets/play.mp4"
         ></video>
         <img src="@/assets/play.png" class="play-img" />
         <img src="@/assets/nie.png" class="nie" @click="play" />
