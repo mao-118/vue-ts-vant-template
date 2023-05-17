@@ -35,24 +35,125 @@ export function judgePhoneType() {
 }
 
 /**
- * 调用IOS | android API接口方法
- * 消息传送
- * type: 执行操作类型
- * CLINETMETHOD 枚举对象
- * data: 所需要的参数
- *     和IOS安卓协商参数
- * */
-export function callClientMethod(type: ClientMethod, params = {}) {
-  type materialsType = Record<string, any>
-  const materials: materialsType = { type }
-  const { isIos, isAndroid } = judgePhoneType()
-  if (isIos) {
-    materials.params = params
-    window.webkit.messageHandlers.common.postMessage(JSON.stringify(materials))
-  } else if (isAndroid) {
-    materials.data = params
-    window.bridge.postMessage(JSON.stringify(materials))
+ * 获取正确的bridge对象,用来和app交互
+ * 针对安卓和ios系统，对window.WebViewJavascriptBridge进行兼容性处理
+ *  */
+function setupWebViewJavascriptBridge(callback: (bridge: any) => void) {
+  const { isAndroid, isIos } = judgePhoneType()
+  // Android使用
+  if (isAndroid) {
+    if (window.WebViewJavascriptBridge) {
+      callback(window.WebViewJavascriptBridge)
+    } else {
+      // 添加dom事件
+      document.addEventListener(
+        'WebViewJavascriptBridgeReady',
+        function () {
+          callback(window.WebViewJavascriptBridge)
+        },
+        false
+      )
+    }
   }
+
+  // iOS使用
+  if (isIos) {
+    if (window.WebViewJavascriptBridge) {
+      return callback(window.WebViewJavascriptBridge)
+    }
+    if (window.WVJBCallbacks) {
+      return window.WVJBCallbacks.push(callback)
+    }
+    window.WVJBCallbacks = [callback]
+    const WVJBIframe = document.createElement('iframe')
+    WVJBIframe.style.display = 'none'
+    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__'
+    document.documentElement.appendChild(WVJBIframe)
+    setTimeout(function () {
+      document.documentElement.removeChild(WVJBIframe)
+    }, 0)
+  }
+}
+// 注册回调函数，第一次连接时调用 初始化函数(android需要初始化,ios不用)
+setupWebViewJavascriptBridge(function (bridge) {
+  const { isAndroid } = judgePhoneType()
+  if (isAndroid) {
+    // 初始化
+    bridge.init(function (message: any, responseCallback: any) {
+      const data = {
+        'Javascript Responds': 'Wee!',
+      }
+      responseCallback(data)
+    })
+  }
+})
+
+/**
+ * js调用app方法
+ * @param name app提供的方法名
+ * @param data 传给app的参数
+ * @param callback app返回的回调 会将所需的数据当作参数返回
+ */
+export function appCallHandler(name: string, data: any, callback: any) {
+  setupWebViewJavascriptBridge((bridge) => {
+    bridge.callHandler(name, data, callback)
+  })
+}
+/**
+ * app调用js方法
+ * @param name js提供的方法名
+ * @param callback app返回的回调 会将所需的数据当作参数返回
+ */
+export function appRegisterHandler(name: string, callback: any) {
+  setupWebViewJavascriptBridge((bridge) => {
+    bridge.registerHandler(name, (data: any, responseCallback: any) => {
+      callback(data, responseCallback)
+    })
+  })
+}
+/**
+ * 获取app给到的请求头参数，h5必须有这些参数，否则请求不成功
+ * @param callback 会将所需的参数给到该回调函数
+ */
+export const getUserInfo = () => {
+  return new Promise((resolve, reject) => {
+    const { isAndroid, isIos } = judgePhoneType()
+    if (isAndroid || isIos) {
+      appCallHandler(
+        'userInfo',
+        [
+          'uid',
+          'token',
+          'appVersion',
+          'DeviceId',
+          'CustomDeviceId',
+          'osType',
+          'timeStamp',
+          'tokenSign',
+          'osVersion',
+          'deviceName',
+          'name',
+          'sex',
+          'enrollmentYear',
+          'role',
+        ],
+        (userInfo: any) => {
+          const { name, sex, enrollmentYear, role, ...header } = JSON.parse(userInfo)
+          resolve({
+            name,
+            sex,
+            enrollmentYear,
+            role,
+            header,
+          })
+        }
+      )
+    } else {
+      const userInfo = localStorage.getItem('userInfo') || getHrefParams('option')
+      localStorage.setItem('userInfo', userInfo)
+      resolve(JSON.parse(userInfo))
+    }
+  })
 }
 /**
  * 版本比较

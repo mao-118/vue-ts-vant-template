@@ -1,3 +1,7 @@
+# 万航 h5 版本
+
+内置万航 h5 的一些方法，其他无区别
+
 ## Vue 3 + TypeScript + Vite
 
 该模板将帮助您开始在`Vite`中使用`Vue3` 和 `TypeScript`进行开发。
@@ -27,8 +31,6 @@ pnpm run build:deve
 项目中配备 `eslint` + `prettier` 语法校验以及代码修复，基于 `vue3`，我们使用 `volar` 而不是 `vetur`。
 
 `volar` 对 `vue3` 的语法支持更友好。
-
-代码规范遵循 [公司前端代码规范](http://frontdevstudy.tianmcloud.top/standard/javascript.html)
 
 ## vant 引入
 

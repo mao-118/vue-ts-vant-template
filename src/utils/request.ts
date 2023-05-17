@@ -1,24 +1,22 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig, AxiosRequestHeaders } from 'axios'
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios'
 import { Toast } from 'vant'
-import { getToken } from '@/utils'
+import { getUserInfo } from '@/utils'
 import { NProgress } from '@/plugins/nprogress'
-import { toEncryption } from './encryption'
 import { Result } from './typings'
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 5000,
-  headers: {
-    token: getToken(),
-  },
+  // headers: {},
 })
 
 service.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  async (config: AxiosRequestConfig) => {
     NProgress.start()
-    // 验签
-    // const requestHeaders = config.headers as AxiosRequestHeaders
-    // requestHeaders.timestamp = String(Math.floor(new Date().valueOf() / 1000))
-    // requestHeaders.sign = toEncryption(config.data || config.params || {})
+    const userInfo: any = await getUserInfo()
+    config.headers = {
+      ...config.headers,
+      ...userInfo.header, // 挂载app传递的头信息
+    }
     return config
   },
   (error) => {
