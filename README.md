@@ -1,3 +1,7 @@
+# 气泡音符版本
+
+内置一些气泡音符版本的 h5 方法,其他无区别
+
 ## Vue 3 + TypeScript + Vite
 
 该模板将帮助您开始在`Vite`中使用`Vue3` 和 `TypeScript`进行开发。
